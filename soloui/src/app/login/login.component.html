@@ -1,0 +1,23 @@
+<div class="login-container">
+  <h2 *ngIf="!isLoggedIn()">Login</h2>
+
+  <form *ngIf="!isLoggedIn()" (ngSubmit)="login()" #loginForm="ngForm">
+    <input
+      type="text"
+      [(ngModel)]="ntid"
+      name="ntid"
+      placeholder="NTID"
+      required
+    />
+    <input
+      type="password"
+      [(ngModel)]="password"
+      name="password"
+      placeholder="Password"
+      required
+    />
+    <button type="submit" [disabled]="loginForm.invalid">Login</button>
+  </form>
+
+  <p *ngIf="error" style="color:red">{{ error }}</p>
+</div>

@@ -1,0 +1,86 @@
+.automation-wrapper {
+  padding: 30px;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.search-bar {
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 24px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  transition: box-shadow 0.3s ease;
+}
+
+.search-bar:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25);
+}
+
+.carousel-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.tiles-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 20px;
+  padding: 10px 0;
+  flex-grow: 1;
+}
+
+.tile {
+  min-width: 260px;
+  max-width: 260px;
+  height: 350px;
+  background: white;
+  border: 1px solid #dee2e6;
+  border-radius: 16px;
+  padding: 20px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.tile:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  border-color: #0d6efd;
+}
+
+.tile h3 {
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+  color: #0d6efd;
+}
+
+.tile p {
+  font-size: 0.95rem;
+  color: #495057;
+  line-height: 1.5;
+}
+
+.nav-btn {
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+  font-size: 24px;
+  width: 44px;
+  height: 100%;
+  cursor: pointer;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease;
+}
+
+.nav-btn:hover {
+  background-color: #0b5ed7;
+}

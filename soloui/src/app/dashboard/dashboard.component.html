@@ -1,0 +1,23 @@
+<nav class="navbar shadow">
+  <div class="logo">🚀 Automations</div>
+
+  <ul class="nav-links">
+    <li><a routerLink="home" routerLinkActive="active">Home</a></li>
+    <li><a routerLink="automations" routerLinkActive="active">Automations</a></li>
+    <li><a routerLink="documentation" routerLinkActive="active">Documentation</a></li>
+  </ul>
+
+  <div class="dropdown">
+    <button (click)="toggleDropdown()" class="dropdown-toggle">
+      👤 Welcome, <strong>{{ firstName }}</strong> ▾
+    </button>
+
+    <ul class="dropdown-menu" *ngIf="dropdownOpen">
+      <li><button (click)="logout()" class="logout-btn">🚪 Logout</button></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="main-content">
+  <router-outlet></router-outlet>
+</div>

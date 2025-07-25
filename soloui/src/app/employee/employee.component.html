@@ -1,0 +1,38 @@
+<h2>Employee List</h2>
+
+<div *ngIf="isLoggedIn()">
+  <p>You are logged in as <strong>{{ ntid }}</strong></p>
+  <p><strong>Name:</strong> {{ firstName }}</p>
+  <p><strong>Email:</strong> {{ email }}</p>
+  <p><strong>Unit:</strong> {{ unitName }}</p>
+  <button (click)="logout()">Logout</button>
+</div>
+
+<table *ngIf="employeeList.length; else noData" border="1" cellspacing="0" cellpadding="8">
+  <thead>
+    <tr>
+      <th>Sr No</th>
+      <th>NTID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Unit</th>
+      <th>Active</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let emp of employeeList; index as i">
+      <td>{{ i + 1 }}</td>
+      <td>{{ emp.NTID }}</td>
+      <td>{{ emp.First_Name }}</td>
+      <td>{{ emp.Last_Name }}</td>
+      <td>{{ emp.Email_Id }}</td>
+      <td>{{ emp.Unit_Name }}</td>
+      <td>{{ emp.IsActive ? 'Yes' : 'No' }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #noData>
+  <p>No employee data available.</p>
+</ng-template>

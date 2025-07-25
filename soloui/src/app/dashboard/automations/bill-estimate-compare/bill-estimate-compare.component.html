@@ -1,0 +1,58 @@
+<div class="container">
+  <h2>📄 Compare Estimate vs Actual Bill</h2>
+
+  <!-- Upload boxes -->
+  <div class="upload-boxes">
+    <div class="upload-box">
+      <label for="file1">Estimate PDF:</label>
+      <input type="file" id="file1" (change)="onFileSelected($event, 1)" accept=".pdf" />
+    </div>
+
+    <div class="upload-box">
+      <label for="file2">Actual PDF:</label>
+      <input type="file" id="file2" (change)="onFileSelected($event, 2)" accept=".pdf" />
+    </div>
+  </div>
+
+  <button class="upload-btn" (click)="uploadFiles()">Upload & Compare</button>
+  <p class="status">{{ uploadStatus }}</p>
+</div>
+
+<div *ngIf="linePairs.length" style="margin-top: 20px;">
+  <h2>📄 Side-by-Side Aligned Comparison</h2>
+
+  <!-- Summary block -->
+  <ul style="list-style: none; padding-left: 0; font-weight: bold;">
+    <li>🔴 Changed/Removed lines: {{ counts.removed }}</li>
+    <li>🟢 Added lines: {{ counts.added }}</li>
+  </ul>
+
+  <!-- Table Headers -->
+  <div style="display: flex; font-weight: bold; border-bottom: 1px solid #999;">
+    <div style="flex: 1; padding: 4px;">File 1</div>
+    <div style="flex: 1; padding: 4px;">File 2</div>
+  </div>
+
+  <!-- Line-by-line pairs -->
+  <div *ngFor="let pair of linePairs" style="display: flex; border-bottom: 1px solid #eee;">
+    <!-- FILE 1 -->
+    <div
+      style="flex: 1; padding: 4px; white-space: pre-wrap;"
+      [ngStyle]="{
+        color: !pair[1] && pair[0] ? 'green' : pair[0] !== pair[1] ? 'red' : 'black'
+      }"
+    >
+      {{ pair[0] }}
+    </div>
+
+    <!-- FILE 2 -->
+    <div
+      style="flex: 1; padding: 4px; white-space: pre-wrap;"
+      [ngStyle]="{
+        color: !pair[0] && pair[1] ? 'green' : pair[0] !== pair[1] ? 'red' : 'black'
+      }"
+    >
+      {{ pair[1] }}
+    </div>
+  </div>
+</div>

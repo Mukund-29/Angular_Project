@@ -1,0 +1,21 @@
+<div class="automation-wrapper container">
+  <input type="text"
+         [(ngModel)]="searchTerm"
+         placeholder="Search automations..."
+         class="search-bar form-control" />
+
+  <div class="carousel-container mt-3">
+    <button class="nav-btn left me-2" (click)="scrollLeft()">‹</button>
+
+    <div class="tiles-container" #carousel>
+      <div class="tile" *ngFor="let item of filteredItems()" (click)="navigateTo(item.route)">
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.description }}</p>
+      </div>
+    </div>
+
+    <button class="nav-btn right ms-2" (click)="scrollRight()">›</button>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
