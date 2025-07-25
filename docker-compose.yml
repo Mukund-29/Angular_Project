@@ -1,0 +1,29 @@
+version: '1.0'
+
+services:
+  frontend:
+    build:
+      context: ./soloui
+      dockerfile: Dockerfile
+    image: your-dockerhub-username/soloapp-frontend:1.0
+    ports:
+      - "8081:80"
+    container_name: soloapp-frontend
+    restart: always
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      args:
+        RUN_MIGRATIONS: "true"
+    image: your-dockerhub-username/soloapp-backend:1.0
+    ports:
+      - "8060:8080"
+    container_name: soloapp-backend
+    environment:
+      - DJANGO_SETTINGS_MODULE=backend.settings
+    volumes:
+      # Mount local database only for dev, avoid this in production
+      - ./backend/db.sqlite3:/app/db.sqlite3
+    restart: always
